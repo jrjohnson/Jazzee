@@ -1,0 +1,7 @@
+Jazzee\CommonBundle\Entity\Program:
+    properties:
+        name:
+            - NotBlank: ~
+        shortName:
+            - NotBlank: ~
+            - Regex: "[0-9a-zA-Z_]"

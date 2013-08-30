@@ -1,0 +1,20 @@
+{# src Jazzee/CommonBundle/Resources/views/ApplicantLogin/login.html.twig #}
+{% extends 'JazzeeCommonBundle::layout.html.twig' %}
+{% block title %}{{ application.cycle.name }} {{ application.program.name }} Login{% endblock %}
+{% block hd %}<h1>{{ application.cycle.name }} {{ application.program.name }} Login</h1>{% endblock %}
+{% block content %}
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+    <form action="{{ 
+        path('jazzee_common_applicantlogincheck',
+        {'programShortName': application.program.shortName,
+        'cycleName': application.cycle.name})
+    }}" method="post">
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+        <button type="submit">login</button>
+    </form>
+{% endblock %}

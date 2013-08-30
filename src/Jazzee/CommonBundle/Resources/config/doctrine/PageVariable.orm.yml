@@ -1,0 +1,29 @@
+Jazzee\CommonBundle\Entity\PageVariable:
+    type: entity
+    table: page_variables
+    uniqueConstraints:
+        pagevariable_name:
+            columns:
+                - page_id
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string
+        value:
+            type: text
+    manyToOne:
+        page:
+            targetEntity: \Jazzee\CommonBundle\Entity\Page
+            inversedBy: variables
+            joinColumns:
+                page_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    lifecycleCallbacks:
+        preUpdate:
+            - replacePageUuid

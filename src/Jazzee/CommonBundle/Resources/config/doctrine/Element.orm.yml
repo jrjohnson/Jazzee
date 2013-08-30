@@ -1,0 +1,69 @@
+Jazzee\CommonBundle\Entity\Element:
+    type: entity
+    table: elements
+    uniqueConstraints:
+        element_fixedId:
+            columns:
+                - page_id
+                - fixedId
+        element_name:
+            columns:
+                - page_id
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        weight:
+            type: integer
+        fixedId:
+            type: integer
+            nullable: true
+        title:
+            type: string
+        name:
+            type: string
+            nullable: true
+        format:
+            type: string
+            nullable: true
+        min:
+            type: decimal
+            nullable: true
+        max:
+            type: decimal
+            nullable: true
+        required:
+            type: boolean
+        instructions:
+            type: text
+            nullable: true
+        defaultValue:
+            type: string
+            nullable: true
+    manyToOne:
+        type:
+            targetEntity: \Jazzee\CommonBundle\Entity\ElementType
+            joinColumns:
+                type_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        page:
+            targetEntity: \Jazzee\CommonBundle\Entity\Page
+            inversedBy: elements
+            joinColumns:
+                page_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        listItems:
+            targetEntity: \Jazzee\CommonBundle\Entity\ElementListItem
+            mappedBy: element
+            orphanRemoval: false
+            orderBy:
+                weight: ASC
+    lifecycleCallbacks:
+        preUpdate:
+            - replacePageUuid

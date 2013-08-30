@@ -1,0 +1,136 @@
+Jazzee\CommonBundle\Entity\Applicant:
+    type: entity
+    table: applicants
+    indexes:
+        applicant_email:
+            columns:
+                - email
+    repositoryClass: \Jazzee\CommonBundle\Repository\Applicant
+    uniqueConstraints:
+        application_email:
+            columns:
+                - application_id
+                - email
+        applicant_uniqueId:
+            columns:
+                - uniqueId
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        uniqueId:
+            type: string
+            length: 255
+            nullable: true
+        externalId:
+            type: string
+            length: 255
+            nullable: true
+        email:
+            type: string
+        password:
+            type: string
+        isLocked:
+            type: boolean
+        firstName:
+            type: string
+        middleName:
+            type: string
+            nullable: true
+        lastName:
+            type: string
+        suffix:
+            type: string
+            nullable: true
+        deadlineExtension:
+            type: datetime
+            nullable: true
+        lastLogin:
+            type: datetime
+            nullable: true
+        lastLoginIp:
+            type: string
+            length: 15
+            nullable: true
+        lastFailedLoginIp:
+            type: string
+            length: 15
+            nullable: true
+        failedLoginAttempts:
+            type: integer
+            nullable: true
+        createdAt:
+            type: datetime
+            nullable: true
+        updatedAt:
+            type: datetime
+            nullable: true
+        percentComplete:
+            type: float
+        hasPaid:
+            type: boolean
+        deactivated:
+            type: boolean
+    manyToOne:
+        application:
+            targetEntity: \Jazzee\CommonBundle\Entity\Application
+            inversedBy: applicants
+            joinColumns:
+                application_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        answers:
+            targetEntity: \Jazzee\CommonBundle\Entity\Answer
+            mappedBy: applicant
+            orphanRemoval: false
+            orderBy: null
+        attachments:
+            targetEntity: \Jazzee\CommonBundle\Entity\Attachment
+            mappedBy: applicant
+            orphanRemoval: false
+            orderBy: null
+        threads:
+            targetEntity: \Jazzee\CommonBundle\Entity\Thread
+            mappedBy: applicant
+            orphanRemoval: false
+            orderBy:
+                createdAt: ASC
+        duplicates:
+            targetEntity: \Jazzee\CommonBundle\Entity\Duplicate
+            mappedBy: applicant
+            orphanRemoval: false
+            orderBy: null
+        auditLogs:
+            targetEntity: \Jazzee\CommonBundle\Entity\AuditLog
+            mappedBy: applicant
+            orphanRemoval: false
+            orderBy: null
+    oneToOne:
+        decision:
+            targetEntity: \Jazzee\CommonBundle\Entity\Decision
+            cascade:
+                - persist
+            mappedBy: applicant
+            joinColumns: {  }
+            orphanRemoval: false
+    manyToMany:
+        tags:
+            targetEntity: \Jazzee\CommonBundle\Entity\Tag
+            inversedBy: applicants
+            joinTable:
+                name: applicant_tags
+                schema: null
+                joinColumns:
+                    -
+                        name: applicant_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: tag_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+            orderBy: null

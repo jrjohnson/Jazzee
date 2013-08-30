@@ -1,0 +1,44 @@
+Jazzee\CommonBundle\Entity\Cycle:
+    type: entity
+    table: cycles
+    repositoryClass: \Jazzee\CommonBundle\Repository\Cycle
+    uniqueConstraints:
+        cycle_name_unique:
+            columns:
+                - name
+    fields:
+        id:
+            id: true
+            type: integer
+            generator: { strategy: AUTO }
+        name:
+            type: string
+            length: 32
+        start:
+            type: datetime
+            nullable: true
+        end:
+            type: datetime
+            nullable: true
+    oneToMany:
+        applications:
+            targetEntity: \Jazzee\CommonBundle\Entity\Application
+            mappedBy: cycle
+            orphanRemoval: false
+            orderBy: null
+    manyToMany:
+        requiredPages:
+            targetEntity: \Jazzee\CommonBundle\Entity\Page
+            joinTable:
+                name: cycle_page
+                joinColumns:
+                    -
+                        name: cycle_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: page_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+            orderBy: null

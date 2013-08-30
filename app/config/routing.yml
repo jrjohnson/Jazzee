@@ -1,0 +1,4 @@
+jazzee_common:
+    resource: "@JazzeeCommonBundle/Resources/config/routing.yml"
+    prefix:   /
+

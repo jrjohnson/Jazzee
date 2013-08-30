@@ -1,0 +1,31 @@
+Jazzee\CommonBundle\Entity\Duplicate:
+    type: entity
+    table: duplicates
+    uniqueConstraints:
+        duplicate_applicant:
+            columns:
+                - applicant_id
+                - duplicate_id
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        isIgnored:
+            type: boolean
+    manyToOne:
+        applicant:
+            targetEntity: \Jazzee\CommonBundle\Entity\Applicant
+            inversedBy: duplicates
+            joinColumns:
+                applicant_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+        duplicate:
+            targetEntity: \Jazzee\CommonBundle\Entity\Applicant
+            joinColumns:
+                duplicate_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

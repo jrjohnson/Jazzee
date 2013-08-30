@@ -1,0 +1,25 @@
+Jazzee\CommonBundle\Entity\PDFTemplate:
+    type: entity
+    table: pdf_templates
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        title:
+            type: string
+            length: 200
+        fileHash:
+            type: string
+            length: 128
+        blocks:
+            type: array
+    manyToOne:
+        application:
+            targetEntity: \Jazzee\CommonBundle\Entity\Application
+            inversedBy: pdfTemplates
+            joinColumns:
+                application_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

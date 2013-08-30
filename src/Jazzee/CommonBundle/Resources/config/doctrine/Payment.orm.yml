@@ -1,0 +1,35 @@
+Jazzee\CommonBundle\Entity\Payment:
+    type: entity
+    table: payments
+    repositoryClass: \Jazzee\CommonBundle\Repository\Payment
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        amount:
+            type: decimal
+        status:
+            type: string
+    oneToOne:
+        answer:
+            targetEntity: \Jazzee\CommonBundle\Entity\Answer
+            inversedBy: payment
+            joinColumns:
+                answer_id:
+                    referencedColumnName: id
+                    onDelete: 'SET NULL'
+            orphanRemoval: false
+    manyToOne:
+        type:
+            targetEntity: \Jazzee\CommonBundle\Entity\PaymentType
+            joinColumns:
+                type_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        variables:
+            targetEntity: \Jazzee\CommonBundle\Entity\PaymentVariable
+            mappedBy: payment
+            orphanRemoval: false
+            orderBy: null

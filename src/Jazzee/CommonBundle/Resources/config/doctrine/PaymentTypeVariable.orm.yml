@@ -1,0 +1,26 @@
+Jazzee\CommonBundle\Entity\PaymentTypeVariable:
+    type: entity
+    table: payment_type_variables
+    uniqueConstraints:
+        payment_type_variable_name:
+            columns:
+                - type_id
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string
+        value:
+            type: string
+    manyToOne:
+        type:
+            targetEntity: \Jazzee\CommonBundle\Entity\PaymentType
+            inversedBy: variables
+            joinColumns:
+                type_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

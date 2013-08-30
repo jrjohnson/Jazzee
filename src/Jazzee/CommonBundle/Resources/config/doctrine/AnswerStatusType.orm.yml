@@ -1,0 +1,14 @@
+Jazzee\CommonBundle\Entity\AnswerStatusType:
+    type: entity
+    table: answer_status_types
+    uniqueConstraints:
+        answerstatustype_name:
+            columns:
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string

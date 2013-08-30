@@ -1,0 +1,18 @@
+{# src/Jazzee/CommongBundle/Resources/views/Welcome/index.html.twig #}
+{% extends 'JazzeeCommonBundle::layout.html.twig' %}
+{% block title %}{{ program.name }}{% endblock %}
+{% block hd %}<h1>{{ program.name }}</h1>{% endblock %}
+{% block content %}
+    <h3>List of Cycles</h3>
+    <ul class='nobullets'>
+    {% for application in applications %} 
+        <li>
+            <a href="{{ path('jazzee_common_applicationwelcome', {'programShortName': program.shortName,'cycleName': application.cycle.name}) }}">
+                {{ application.cycle.name }}
+            </a>
+        </li>
+    {% else %}
+        <li>No applications are available.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

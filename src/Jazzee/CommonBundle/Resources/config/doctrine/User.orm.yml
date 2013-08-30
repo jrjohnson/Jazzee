@@ -1,0 +1,76 @@
+Jazzee\CommonBundle\Entity\User:
+    type: entity
+    table: users
+    repositoryClass: \Jazzee\CommonBundle\Repository\User
+    uniqueConstraints:
+        user_name:
+            columns:
+                - uniqueName
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        uniqueName:
+            type: string
+        email:
+            type: string
+            nullable: true
+        firstName:
+            type: string
+            nullable: true
+        lastName:
+            type: string
+            nullable: true
+        apiKey:
+            type: string
+            nullable: true
+        isActive:
+            type: boolean
+        preferences:
+            type: array
+            nullable: true
+    manyToOne:
+        defaultProgram:
+            targetEntity: \Jazzee\CommonBundle\Entity\Program
+            joinColumns:
+                defaultProgram_id:
+                    referencedColumnName: id
+                    onDelete: 'SET NULL'
+            orphanRemoval: false
+        defaultCycle:
+            targetEntity: \Jazzee\CommonBundle\Entity\Cycle
+            joinColumns:
+                defaultCycle_id:
+                    referencedColumnName: id
+                    onDelete: 'SET NULL'
+            orphanRemoval: false
+    manyToMany:
+        roles:
+            targetEntity: \Jazzee\CommonBundle\Entity\Role
+            inversedBy: users
+            joinTable:
+                name: user_roles
+                schema: null
+                joinColumns:
+                    -
+                        name: user_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+                inverseJoinColumns:
+                    -
+                        name: role_id
+                        referencedColumnName: id
+                        onDelete: CASCADE
+            orderBy: null
+    oneToMany:
+        auditLogs:
+            targetEntity: \Jazzee\CommonBundle\Entity\AuditLog
+            mappedBy: user
+            orphanRemoval: false
+            orderBy: null
+        displays:
+            targetEntity: \Jazzee\CommonBundle\Entity\Display
+            mappedBy: user
+            orphanRemoval: false
+            orderBy: null

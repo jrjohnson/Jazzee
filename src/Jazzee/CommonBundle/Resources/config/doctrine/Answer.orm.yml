@@ -1,0 +1,96 @@
+Jazzee\CommonBundle\Entity\Answer:
+    type: entity
+    table: answers
+    repositoryClass: \Jazzee\CommonBundle\Repository\Answer
+    uniqueConstraints:
+        answer_uniqueId:
+            columns:
+                - uniqueId
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        pageStatus:
+            type: integer
+            nullable: true
+        uniqueId:
+            type: string
+            length: 255
+        locked:
+            type: boolean
+        updatedAt:
+            type: datetime
+    manyToOne:
+        applicant:
+            targetEntity: \Jazzee\CommonBundle\Entity\Applicant
+            inversedBy: answers
+            joinColumns:
+                applicant_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+        page:
+            targetEntity: \Jazzee\CommonBundle\Entity\Page
+            joinColumns:
+                page_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+        parent:
+            targetEntity: \Jazzee\CommonBundle\Entity\Answer
+            inversedBy: children
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+        publicStatus:
+            targetEntity: \Jazzee\CommonBundle\Entity\AnswerStatusType
+            joinColumns:
+                publicStatus_id:
+                    referencedColumnName: id
+                    onDelete: 'SET NULL'
+        privateStatus:
+            targetEntity: \Jazzee\CommonBundle\Entity\AnswerStatusType
+            joinColumns:
+                privateStatus_id:
+                    referencedColumnName: id
+                    onDelete: 'SET NULL'
+        greScore:
+            targetEntity: \Jazzee\CommonBundle\Entity\GREScore
+            joinColumns:
+                greScore_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        toeflScore:
+            targetEntity: \Jazzee\CommonBundle\Entity\TOEFLScore
+            joinColumns:
+                toeflScore_id:
+                    referencedColumnName: id
+        school:
+            targetEntity: \Jazzee\CommonBundle\Entity\School
+            joinColumns:
+                school_id:
+                    referencedColumnName: id
+    oneToMany:
+        children:
+            targetEntity: \Jazzee\CommonBundle\Entity\Answer
+            mappedBy: parent
+            orphanRemoval: false
+            orderBy: null
+        elements:
+            targetEntity: \Jazzee\CommonBundle\Entity\ElementAnswer
+            cascade:
+                - persist
+            mappedBy: answer
+            orphanRemoval: false
+            orderBy: null
+    oneToOne:
+        attachment:
+            targetEntity: \Jazzee\CommonBundle\Entity\Attachment
+            mappedBy: answer
+            joinColumns: {  }
+            orphanRemoval: false
+        payment:
+            targetEntity: \Jazzee\CommonBundle\Entity\Payment
+            mappedBy: answer
+            joinColumns: {  }
+            orphanRemoval: false

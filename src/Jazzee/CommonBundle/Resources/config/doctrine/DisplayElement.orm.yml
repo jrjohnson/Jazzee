@@ -1,0 +1,40 @@
+Jazzee\CommonBundle\Entity\DisplayElement:
+    type: entity
+    table: display_elements
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        type:
+            type: string
+        title:
+            type: string
+        name:
+            type: string
+            nullable: true
+        weight:
+            type: integer
+    manyToOne:
+        display:
+            targetEntity: \Jazzee\CommonBundle\Entity\Display
+            inversedBy: elements
+            joinColumns:
+                display_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+        element:
+            targetEntity: \Jazzee\CommonBundle\Entity\Element
+            joinColumns:
+                element_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+        page:
+            targetEntity: \Jazzee\CommonBundle\Entity\Page
+            joinColumns:
+                page_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

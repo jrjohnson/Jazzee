@@ -1,0 +1,41 @@
+Jazzee\CommonBundle\Entity\ElementListItem:
+    type: entity
+    table: element_list_items
+    repositoryClass: \Jazzee\CommonBundle\Repository\ElementListItem
+    uniqueConstraints:
+        item_name:
+            columns:
+                - element_id
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        weight:
+            type: integer
+        active:
+            type: boolean
+        value:
+            type: string
+        name:
+            type: string
+            nullable: true
+    manyToOne:
+        element:
+            targetEntity: \Jazzee\CommonBundle\Entity\Element
+            inversedBy: listItems
+            joinColumns:
+                element_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        variables:
+            targetEntity: \Jazzee\CommonBundle\Entity\ElementListItemVariable
+            mappedBy: item
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks:
+        preUpdate:
+            - replacePageUuid

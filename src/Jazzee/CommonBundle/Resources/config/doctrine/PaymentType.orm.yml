@@ -1,0 +1,27 @@
+Jazzee\CommonBundle\Entity\PaymentType:
+    type: entity
+    table: payment_types
+    uniqueConstraints:
+        payemnttype_class:
+            columns:
+                - class
+        paymenttype_name:
+            columns:
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string
+        class:
+            type: string
+        isExpired:
+            type: boolean
+    oneToMany:
+        variables:
+            targetEntity: \Jazzee\CommonBundle\Entity\PaymentTypeVariable
+            mappedBy: type
+            orphanRemoval: false
+            orderBy: null

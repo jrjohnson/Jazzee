@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+html {
+  background-color: #e6e6e6;
+}
+
+
+#hd {
+  background-color:#000000;
+}
+
+#hd h1{
+  color:#ffffff;
+}
+
+#bd {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+a, a:visited {color:#003366;}
+a:hover {color:#cc6600;}
+a.highlight {font-weight: bold;}
+
+
+.success {
+  color: #7799bb;
+  border-color:#7799bb;
+}
+
+.notice {
+  color: #cc9933;
+  border-color:#cc9933;
+}
+
+.error {
+  color: #990000;
+  border-color: #990000;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+ul.nobullets {
+    list-style-type: none;
+}

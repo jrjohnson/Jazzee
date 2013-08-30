@@ -1,0 +1,29 @@
+Jazzee\CommonBundle\Entity\AuditLog:
+    type: entity
+    table: audit_log
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        createdAt:
+            type: datetime
+        text:
+            type: text
+    manyToOne:
+        user:
+            targetEntity: \Jazzee\CommonBundle\Entity\User
+            inversedBy: auditLogs
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+        applicant:
+            targetEntity: \Jazzee\CommonBundle\Entity\Applicant
+            inversedBy: auditLogs
+            joinColumns:
+                applicant_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+/***** Default Jazzee layout *****/
+#container{
+    margin:auto;
+    width: 85%;
+}
+#hd h1 {
+  text-align: right;
+  margin: 0;
+  padding: .1em 1em;
+}
+
+#content {
+  min-height: 400px;
+}
+
+#ft {
+  clear: both;
+}
+
+#ft p {
+  margin: 20px 0;
+}
+

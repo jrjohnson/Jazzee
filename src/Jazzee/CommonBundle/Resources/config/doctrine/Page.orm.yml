@@ -1,0 +1,81 @@
+Jazzee\CommonBundle\Entity\Page:
+    type: entity
+    table: pages
+    repositoryClass: \Jazzee\CommonBundle\Repository\Page
+    uniqueConstraints:
+        page_uuid:
+            columns:
+                - uuid
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        uuid:
+            type: string
+        title:
+            type: string
+        isGlobal:
+            type: boolean
+        fixedId:
+            type: integer
+            nullable: true
+        min:
+            type: integer
+            nullable: true
+        max:
+            type: integer
+            nullable: true
+        isRequired:
+            type: boolean
+        answerStatusDisplay:
+            type: boolean
+        instructions:
+            type: text
+            nullable: true
+        leadingText:
+            type: text
+            nullable: true
+        trailingText:
+            type: text
+            nullable: true
+    manyToOne:
+        type:
+            targetEntity: \Jazzee\CommonBundle\Entity\PageType
+            joinColumns:
+                type_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        parent:
+            targetEntity: \Jazzee\CommonBundle\Entity\Page
+            inversedBy: children
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        children:
+            targetEntity: \Jazzee\CommonBundle\Entity\Page
+            mappedBy: parent
+            orphanRemoval: false
+            orderBy: null
+        variables:
+            targetEntity: \Jazzee\CommonBundle\Entity\PageVariable
+            mappedBy: page
+            orphanRemoval: false
+            orderBy: null
+        elements:
+            targetEntity: \Jazzee\CommonBundle\Entity\Element
+            mappedBy: page
+            orphanRemoval: false
+            orderBy:
+                weight: ASC
+        applicationPages:
+            targetEntity: \Jazzee\CommonBundle\Entity\ApplicationPage
+            mappedBy: page
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks:
+        preUpdate:
+            - replaceUuid

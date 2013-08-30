@@ -1,0 +1,25 @@
+Jazzee\CommonBundle\Entity\Message:
+    type: entity
+    table: messages
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        sender:
+            type: integer
+        text:
+            type: text
+        createdAt:
+            type: datetime
+        isRead:
+            type: boolean
+    manyToOne:
+        thread:
+            targetEntity: \Jazzee\CommonBundle\Entity\Thread
+            inversedBy: messages
+            joinColumns:
+                thread_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

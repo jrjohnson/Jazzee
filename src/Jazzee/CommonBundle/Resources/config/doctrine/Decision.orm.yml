@@ -1,0 +1,41 @@
+Jazzee\CommonBundle\Entity\Decision:
+    type: entity
+    table: decisions
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        nominateAdmit:
+            type: datetime
+            nullable: true
+        nominateDeny:
+            type: datetime
+            nullable: true
+        finalAdmit:
+            type: datetime
+            nullable: true
+        finalDeny:
+            type: datetime
+            nullable: true
+        offerResponseDeadline:
+            type: datetime
+            nullable: true
+        decisionViewed:
+            type: datetime
+            nullable: true
+        acceptOffer:
+            type: datetime
+            nullable: true
+        declineOffer:
+            type: datetime
+            nullable: true
+    oneToOne:
+        applicant:
+            targetEntity: \Jazzee\CommonBundle\Entity\Applicant
+            inversedBy: decision
+            joinColumns:
+                applicant_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

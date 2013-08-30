@@ -1,0 +1,19 @@
+{# src/Jazzee/CommongBundle/Resources/views/Welcome/index.html.twig #}
+{% extends 'JazzeeCommonBundle::layout.html.twig' %}
+{% block title %}Select a program{% endblock %}
+{% block hd %}<h1>Select a program</h1>{% endblock %}
+{% block content %}
+    <h3>List of Programs</h3>
+    <ul class='nobullets'>
+    {% for program in programs %} 
+        <li>
+            <a href="{{ path('jazzee_common_programwelcome', {'programShortName': program.shortName}) }}">
+                {{ program.name }}
+            </a>
+        </li>
+    {% else %}
+        <li>No programs are available.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+

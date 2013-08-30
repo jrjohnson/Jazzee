@@ -1,0 +1,50 @@
+Jazzee\CommonBundle\Entity\ElementAnswer:
+    type: entity
+    table: element_answers
+    repositoryClass: \Jazzee\CommonBundle\Repository\ElementAnswer
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        position:
+            type: integer
+            nullable: true
+        eShortString:
+            type: string
+            length: 255
+            nullable: true
+        eText:
+            type: text
+            nullable: true
+        eDate:
+            type: datetime
+            nullable: true
+        eInteger:
+            type: integer
+            nullable: true
+        eDecimal:
+            type: decimal
+            nullable: true
+        eBlob:
+            type: text
+            nullable: true
+    manyToOne:
+        answer:
+            targetEntity: \Jazzee\CommonBundle\Entity\Answer
+            inversedBy: elements
+            joinColumns:
+                answer_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+        element:
+            targetEntity: \Jazzee\CommonBundle\Entity\Element
+            joinColumns:
+                element_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    lifecycleCallbacks:
+        preRemove:
+            - preRemove

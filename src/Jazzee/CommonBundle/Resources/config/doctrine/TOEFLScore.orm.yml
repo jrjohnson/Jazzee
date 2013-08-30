@@ -1,0 +1,113 @@
+Jazzee\CommonBundle\Entity\TOEFLScore:
+    type: entity
+    table: toefl_scores
+    repositoryClass: \Jazzee\CommonBundle\Repository\TOEFLScore
+    uniqueConstraints:
+        toefl_registration:
+            columns:
+                - registrationNumber
+                - testMonth
+                - testYear
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        registrationNumber:
+            type: bigint
+        testMonth:
+            type: integer
+        testYear:
+            type: integer
+        departmentCode:
+            type: string
+            length: 4
+            nullable: true
+        firstName:
+            type: string
+            nullable: true
+        middleName:
+            type: string
+            nullable: true
+        lastName:
+            type: string
+        birthDate:
+            type: datetime
+        gender:
+            type: string
+            length: 1
+            nullable: true
+        nativeCountry:
+            type: string
+        nativeLanguage:
+            type: string
+        testDate:
+            type: datetime
+        testType:
+            type: string
+        listeningIndicator:
+            type: integer
+            length: 1
+            nullable: true
+        speakingIndicator:
+            type: integer
+            length: 1
+            nullable: true
+        ibtListening:
+            type: integer
+            length: 2
+            nullable: true
+            column: IBTListening
+        ibtWriting:
+            type: integer
+            length: 2
+            nullable: true
+            column: IBTWriting
+        ibtSpeaking:
+            type: integer
+            length: 2
+            nullable: true
+            column: IBTSpeaking
+        ibtReading:
+            type: integer
+            length: 2
+            nullable: true
+            column: IBTReading
+        ibtTotal:
+            type: integer
+            length: 3
+            nullable: true
+            column: IBTTotal
+        tseScore:
+            type: integer
+            length: 2
+            nullable: true
+            column: TSEScore
+        listening:
+            type: integer
+            length: 2
+            nullable: true
+        writing:
+            type: integer
+            length: 2
+            nullable: true
+        reading:
+            type: integer
+            length: 2
+            nullable: true
+        essay:
+            type: integer
+            length: 2
+            nullable: true
+        total:
+            type: integer
+            length: 3
+            nullable: true
+        timesTaken:
+            type: integer
+            length: 3
+            nullable: true
+        offTopic:
+            type: string
+            length: 1
+            nullable: true

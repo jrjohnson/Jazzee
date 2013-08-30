@@ -1,0 +1,29 @@
+Jazzee\CommonBundle\Entity\Thread:
+    type: entity
+    table: threads
+    repositoryClass: \Jazzee\CommonBundle\Repository\Thread
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        subject:
+            type: string
+        createdAt:
+            type: datetime
+    manyToOne:
+        applicant:
+            targetEntity: \Jazzee\CommonBundle\Entity\Applicant
+            inversedBy: threads
+            joinColumns:
+                applicant_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        messages:
+            targetEntity: \Jazzee\CommonBundle\Entity\Message
+            mappedBy: thread
+            orphanRemoval: false
+            orderBy:
+                createdAt: ASC

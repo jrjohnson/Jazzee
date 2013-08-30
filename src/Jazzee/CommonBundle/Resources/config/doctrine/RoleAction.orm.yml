@@ -1,0 +1,21 @@
+Jazzee\CommonBundle\Entity\RoleAction:
+    type: entity
+    table: role_actions
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        controller:
+            type: string
+        action:
+            type: string
+    manyToOne:
+        role:
+            targetEntity: \Jazzee\CommonBundle\Entity\Role
+            inversedBy: actions
+            joinColumns:
+                role_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

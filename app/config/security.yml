@@ -1,0 +1,26 @@
+security:
+    encoders:
+        Jazzee\CommonBundle\Entity\Applicant:
+            id: jazzeecommon_authentication.encoder
+    providers:
+        applicant:
+          id: jazzeecommon_authentication_provider
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        applicant_login:
+            pattern:    '^/[0-9a-zA-Z_]+/[0-9a-zA-Z_]+/login$'
+            security: false
+
+        applicant:
+            pattern:    '^/[0-9a-zA-Z_]+/[0-9a-zA-Z_]+/'
+            provider: applicant
+            form_login:
+                login_path:  jazzee_common_applicantlogin
+                check_path:  jazzee_common_applicantlogincheck
+            logout:
+                path:   jazzee_common_applicantlogout
+                target: jazzee_common_applicationwelcome

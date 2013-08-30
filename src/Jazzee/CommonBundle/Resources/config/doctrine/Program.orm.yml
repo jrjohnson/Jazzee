@@ -1,0 +1,22 @@
+Jazzee\CommonBundle\Entity\Program:
+    type: entity
+    table: programs
+    uniqueConstraints:
+        program_name:
+            columns:
+                - name
+        program_shortname:
+            columns:
+                - shortName
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string
+        shortName:
+            type: string
+            length: 32
+        isExpired:
+            type: boolean

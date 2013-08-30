@@ -1,0 +1,27 @@
+parameters:
+    jazzeecommon_authentication.providerclass: Jazzee\CommonBundle\Security\ApplicantProvider
+    jazzeecommon_authentication.listenerclass: Jazzee\CommonBundle\Security\EventListener
+    jazzeecommon_authentication.encoderclass: Jazzee\CommonBundle\Security\PhpassEncoder
+    jazzeecommon.pagetypeloader.class: Jazzee\CommonBundle\Routing\PageTypeLoader
+
+services:
+    jazzeecommon_authentication_provider:
+        class:  "%jazzeecommon_authentication.providerclass%"
+        arguments: ["@doctrine"]
+        calls:
+            - [setRequest, ['@?request=']]
+        
+    jazzeecommon_authentication.listener:
+        class:  "%jazzeecommon_authentication.listenerclass%"
+        arguments: ["@router"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 10 }
+      
+    jazzeecommon_authentication.encoder:
+        class: "%jazzeecommon_authentication.encoderclass%"
+        
+    jazzeecommon_pagetypeloder:
+        class:  "%jazzeecommon.pagetypeloader.class%"
+        arguments: ["@doctrine"]
+        tags:
+          - { name: routing.loader }

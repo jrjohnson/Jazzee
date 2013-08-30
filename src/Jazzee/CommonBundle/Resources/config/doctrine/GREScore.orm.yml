@@ -1,0 +1,109 @@
+Jazzee\CommonBundle\Entity\GREScore:
+    type: entity
+    table: gre_scores
+    repositoryClass: \Jazzee\CommonBundle\Repository\GREScore
+    uniqueConstraints:
+        gre_registration:
+            columns:
+                - registrationNumber
+                - testMonth
+                - testYear
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        registrationNumber:
+            type: bigint
+        testMonth:
+            type: integer
+        testYear:
+            type: integer
+        departmentCode:
+            type: string
+            length: 4
+            nullable: true
+        departmentName:
+            type: string
+            nullable: true
+        firstName:
+            type: string
+        middleInitial:
+            type: string
+            length: 1
+            nullable: true
+        lastName:
+            type: string
+        birthDate:
+            type: datetime
+        gender:
+            type: string
+            length: 1
+            nullable: true
+        testDate:
+            type: datetime
+        testCode:
+            type: string
+            length: 2
+        testName:
+            type: string
+        score1Type:
+            type: string
+            length: 1
+        score1Converted:
+            type: decimal
+            scale: 1
+            precision: 10
+        score1Percentile:
+            type: decimal
+            length: 3
+        score2Type:
+            type: string
+            length: 1
+            nullable: true
+        score2Converted:
+            type: decimal
+            scale: 1
+            nullable: true
+            precision: 10
+        score2Percentile:
+            type: decimal
+            length: 3
+            nullable: true
+        score3Type:
+            type: string
+            length: 1
+            nullable: true
+        score3Converted:
+            type: decimal
+            scale: 1
+            nullable: true
+            precision: 10
+        score3Percentile:
+            type: decimal
+            length: 3
+            nullable: true
+        score4Type:
+            type: string
+            length: 1
+            nullable: true
+        score4Converted:
+            type: decimal
+            scale: 1
+            nullable: true
+            precision: 10
+        score4Percentile:
+            type: decimal
+            length: 3
+            nullable: true
+        sequenceNumber:
+            type: integer
+            length: 4
+        recordSerialNumber:
+            type: integer
+            length: 2
+        cycleNumber:
+            type: integer
+            length: 4
+        processDate:
+            type: datetime

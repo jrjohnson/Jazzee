@@ -1,0 +1,26 @@
+Jazzee\CommonBundle\Entity\ElementListItemVariable:
+    type: entity
+    table: element_list_item_variables
+    uniqueConstraints:
+        elementlistitemvariable_name:
+            columns:
+                - item_id
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string
+        value:
+            type: text
+    manyToOne:
+        item:
+            targetEntity: \Jazzee\CommonBundle\Entity\ElementListItem
+            inversedBy: variables
+            joinColumns:
+                item_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false

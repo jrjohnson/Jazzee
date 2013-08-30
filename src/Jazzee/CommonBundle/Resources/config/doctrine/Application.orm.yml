@@ -1,0 +1,101 @@
+Jazzee\CommonBundle\Entity\Application:
+    type: entity
+    table: applications
+    repositoryClass: \Jazzee\CommonBundle\Repository\Application
+    uniqueConstraints:
+        program_cycle:
+            columns:
+                - program_id
+                - cycle_id
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        contactName:
+            type: string
+            nullable: true
+        contactEmail:
+            type: string
+            nullable: true
+        welcome:
+            type: text
+            nullable: true
+        open:
+            type: datetime
+            nullable: true
+        close:
+            type: datetime
+            nullable: true
+        begin:
+            type: datetime
+            nullable: true
+        published:
+            type: boolean
+        byInvitationOnly:
+            type: boolean
+        visible:
+            type: boolean
+        admitLetter:
+            type: text
+            nullable: true
+        denyLetter:
+            type: text
+            nullable: true
+        statusIncompleteText:
+            type: text
+            nullable: true
+        statusNoDecisionText:
+            type: text
+            nullable: true
+        statusAdmitText:
+            type: text
+            nullable: true
+        statusDenyText:
+            type: text
+            nullable: true
+        statusAcceptText:
+            type: text
+            nullable: true
+        statusDeclineText:
+            type: text
+            nullable: true
+        statusDeactivatedText:
+            type: text
+            nullable: true
+        externalIdValidationExpression:
+            type: string
+            nullable: true
+    manyToOne:
+        program:
+            targetEntity: \Jazzee\CommonBundle\Entity\Program
+            joinColumns:
+                program_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+        cycle:
+            targetEntity: \Jazzee\CommonBundle\Entity\Cycle
+            inversedBy: applications
+            joinColumns:
+                cycle_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        applicants:
+            targetEntity: \Jazzee\CommonBundle\Entity\Applicant
+            mappedBy: application
+            orphanRemoval: false
+            orderBy: null
+        applicationPages:
+            targetEntity: \Jazzee\CommonBundle\Entity\ApplicationPage
+            mappedBy: application
+            orphanRemoval: false
+            orderBy:
+                weight: ASC
+        pdfTemplates:
+            targetEntity: \Jazzee\CommonBundle\Entity\PDFTemplate
+            mappedBy: application
+            orphanRemoval: false
+            orderBy: null

@@ -1,0 +1,68 @@
+Jazzee\CommonBundle\Entity\ApplicationPage:
+    type: entity
+    table: application_pages
+    uniqueConstraints:
+        application_page:
+            columns:
+                - application_id
+                - page_id
+        applicationpage_name:
+            columns:
+                - application_id
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        weight:
+            type: integer
+        kind:
+            type: integer
+        title:
+            type: string
+            nullable: true
+        name:
+            type: string
+            nullable: true
+        min:
+            type: integer
+            nullable: true
+        max:
+            type: integer
+            nullable: true
+        isRequired:
+            type: boolean
+            nullable: true
+        answerStatusDisplay:
+            type: boolean
+            nullable: true
+        instructions:
+            type: text
+            nullable: true
+        leadingText:
+            type: text
+            nullable: true
+        trailingText:
+            type: text
+            nullable: true
+    manyToOne:
+        application:
+            targetEntity: \Jazzee\CommonBundle\Entity\Application
+            inversedBy: applicationPages
+            joinColumns:
+                application_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+        page:
+            targetEntity: \Jazzee\CommonBundle\Entity\Page
+            inversedBy: applicationPages
+            joinColumns:
+                page_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    lifecycleCallbacks:
+        prePersist:
+            - checkConstraints

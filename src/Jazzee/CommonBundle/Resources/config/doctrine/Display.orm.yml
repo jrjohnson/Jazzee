@@ -1,0 +1,45 @@
+Jazzee\CommonBundle\Entity\Display:
+    type: entity
+    table: displays
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        type:
+            type: string
+        name:
+            type: string
+            length: 255
+    manyToOne:
+        user:
+            targetEntity: \Jazzee\CommonBundle\Entity\User
+            inversedBy: displays
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+        application:
+            targetEntity: \Jazzee\CommonBundle\Entity\Application
+            joinColumns:
+                application_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToOne:
+        role:
+            targetEntity: \Jazzee\CommonBundle\Entity\Role
+            inversedBy: display
+            joinColumns:
+                role_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        elements:
+            targetEntity: \Jazzee\CommonBundle\Entity\DisplayElement
+            mappedBy: display
+            orphanRemoval: false
+            orderBy:
+                weight: ASC

@@ -1,0 +1,39 @@
+jazzee_common_welcome:
+    pattern:  /
+    defaults: { _controller: JazzeeCommonBundle:Welcome:index }
+    
+jazzee_common_programwelcome:
+    pattern:  /{programShortName}
+    defaults: { _controller: JazzeeCommonBundle:ProgramWelcome:index }
+    requirements:
+      programShortName: '[0-9a-zA-Z_]+'
+    
+jazzee_common_applicationwelcome:
+    pattern:  /{programShortName}/{cycleName}
+    defaults: { _controller: JazzeeCommonBundle:ApplicationWelcome:index }
+    requirements:
+      programShortName: '[0-9a-zA-Z_]+'
+      cycleName: '[0-9a-zA-Z_]+'
+      
+jazzee_common_applicantlogin:
+    pattern:  /{programShortName}/{cycleName}/login
+    defaults: { _controller: JazzeeCommonBundle:ApplicantLogin:login }
+    requirements:
+      programShortName: '[0-9a-zA-Z_]+'
+      cycleName: '[0-9a-zA-Z_]+'
+      
+jazzee_common_applicantlogincheck:
+    pattern:  /{programShortName}/{cycleName}/login_check
+    requirements:
+      programShortName: '[0-9a-zA-Z_]+'
+      cycleName: '[0-9a-zA-Z_]+'
+      
+jazzee_common_applicantlogout:
+    pattern:  /{programShortName}/{cycleName}/logout
+    requirements:
+      programShortName: '[0-9a-zA-Z_]+'
+      cycleName: '[0-9a-zA-Z_]+'
+
+jazzee_common_page:
+    resource: .
+    type: pagetype

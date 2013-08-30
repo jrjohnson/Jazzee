@@ -1,0 +1,16 @@
+Jazzee\CommonBundle\Entity\VirtualFile:
+    type: entity
+    table: virtual_files
+    uniqueConstraints:
+        virtualfile_name:
+            columns:
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string
+        contents:
+            type: text

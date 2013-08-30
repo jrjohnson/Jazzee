@@ -1,0 +1,21 @@
+Jazzee\CommonBundle\Entity\File:
+    type: entity
+    table: files
+    repositoryClass: \Jazzee\CommonBundle\Repository\File
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        hash:
+            type: string
+            length: 128
+            unique: true
+        encodedBlob:
+            type: text
+        referenceCount:
+            type: integer
+        lastModification:
+            type: datetime
+        lastAccess:
+            type: datetime

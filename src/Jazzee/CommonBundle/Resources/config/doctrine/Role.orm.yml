@@ -1,0 +1,38 @@
+Jazzee\CommonBundle\Entity\Role:
+    type: entity
+    table: roles
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string
+        isGlobal:
+            type: boolean
+    manyToOne:
+        program:
+            targetEntity: \Jazzee\CommonBundle\Entity\Program
+            joinColumns:
+                program_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    oneToMany:
+        actions:
+            targetEntity: \Jazzee\CommonBundle\Entity\RoleAction
+            mappedBy: role
+            orphanRemoval: false
+            orderBy: null
+    manyToMany:
+        users:
+            targetEntity: \Jazzee\CommonBundle\Entity\User
+            mappedBy: roles
+            joinTable: {  }
+            orderBy: null
+    oneToOne:
+        display:
+            targetEntity: \Jazzee\CommonBundle\Entity\Display
+            mappedBy: role
+            joinColumns: {  }
+            orphanRemoval: false

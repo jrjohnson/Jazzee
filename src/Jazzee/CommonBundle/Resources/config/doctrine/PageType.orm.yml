@@ -1,0 +1,19 @@
+Jazzee\CommonBundle\Entity\PageType:
+    type: entity
+    table: page_types
+    uniqueConstraints:
+        pagetype_class:
+            columns:
+                - class
+        pagetype_name:
+            columns:
+                - name
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        name:
+            type: string
+        class:
+            type: string

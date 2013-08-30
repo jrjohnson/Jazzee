@@ -1,13 +1,23 @@
-etc/config.ini.php
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+web/uploads/*
+web/bundles/*
+web/css/*
+web/js/*
+
+# Configuration files
+app/config/parameters.ini
+app/config/parameters.yml
+
+#build artifacts
 build
-vendor
-docs/_build
-var/cache/*
-var/log/*
-var/sesion/*
-var/tmp/*
 .vagrant
 *.box
-dev/iso/*
+app/dev/iso/*
 *.iso
 *~

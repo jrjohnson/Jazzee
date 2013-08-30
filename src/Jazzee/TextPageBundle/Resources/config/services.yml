@@ -1,0 +1,7 @@
+parameters:
+#    jazzee_text_page.example.class: Jazzee\TextPageBundle\Example
+
+services:
+#    jazzee_text_page.example:
+#        class: %jazzee_text_page.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

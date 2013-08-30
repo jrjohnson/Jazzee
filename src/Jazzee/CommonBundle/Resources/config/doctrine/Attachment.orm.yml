@@ -1,0 +1,36 @@
+Jazzee\CommonBundle\Entity\Attachment:
+    type: entity
+    table: attachments
+    fields:
+        id:
+            id: true
+            type: bigint
+            generator: { strategy: AUTO }
+        attachmentHash:
+            type: string
+            length: 128
+        thumbnailHash:
+            type: string
+            length: 128
+            nullable: true
+    oneToOne:
+        answer:
+            targetEntity: \Jazzee\CommonBundle\Entity\Answer
+            inversedBy: attachment
+            joinColumns:
+                answer_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    manyToOne:
+        applicant:
+            targetEntity: \Jazzee\CommonBundle\Entity\Applicant
+            inversedBy: attachments
+            joinColumns:
+                applicant_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
+            orphanRemoval: false
+    lifecycleCallbacks:
+        preRemove:
+            - preRemove
