@@ -14,10 +14,18 @@ class ApplicationPageController extends Controller
         if (!$application or !$application->isPublished()) {
             throw $this->createNotFoundException();
         }
+        $applicationPage = $application
+            ->getApplicationPageById($applicationPageId);
+        if(!$applicationPage){
+            throw $this->createNotFoundException();
+        }
 
         return $this->render(
             'JazzeeTextPageBundle:ApplicationPage:index.html.twig',
-            array('application' => $application)
+            array(
+                'application' => $application,
+                'applicationPage' => $applicationPage
+            )
         );
     }
 }

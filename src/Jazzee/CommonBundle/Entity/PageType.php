@@ -15,7 +15,8 @@ class PageType
 
     protected $id;
     protected $name;
-    protected $class;
+    protected $routeLoaderService;
+    protected $bundleName;
 
     /**
      * Get id
@@ -48,22 +49,40 @@ class PageType
     }
 
     /**
-     * Set class
+     * Set routeLoaderService
      *
-     * @param string $class
+     * @param string $name
      */
-    public function setClass($class)
+    public function setRouteLoaderService($name)
     {
-        $this->class = $class;
+        $this->routeLoaderService = $name;
     }
 
     /**
-     * Get class
+     * Get routeLoaderService
      *
-     * @return string $class
+     * @return string
      */
-    public function getClass()
+    public function getRouteLoaderService()
     {
-        return $this->class;
+        return $this->routeLoaderService;
+    }
+
+    /**
+     * Set the bundle name
+     * @param string $name
+     */
+    public function setBundleName($name)
+    {
+        $this->bundleName = $name;
+    }
+
+    /**
+     * Get the bundle name
+     * @return string
+     */
+    public function getBundleName()
+    {
+        return $this->bundleName;
     }
 }

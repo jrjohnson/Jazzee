@@ -1,1 +1,5 @@
-Hi! I'm a text page.
+{% extends 'JazzeeCommonBundle::page_layout.html.twig' %}
+{% block content %}
+    {{ applicationPage.leadingText | raw }}
+    {{ applicationPage.trailingText | raw }}
+{% endblock %}

@@ -4,8 +4,9 @@ namespace Jazzee\CommonBundle\Routing;
 
 use Symfony\Component\Config\Loader\Loader;
 use Symfony\Component\Routing\RouteCollection;
-use Symfony\Component\Routing\Route;
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use Jazzee\CommonBundle\Interfaces\Page\RouteLoader;
 
 class PageTypeLoader extends Loader
 {
@@ -14,13 +15,20 @@ class PageTypeLoader extends Loader
      * @var \Doctrine\ORM\EntityManager
      */
     protected $em;
+    /**
+     *
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     */
+    protected $container;
 
     /**
-     * Setup with the tntity manager.
+     * Setup with the entity manager.
+     * @param Symfony\Component\DependencyInjection\ContainerInterface $container
      * @param Doctrine\Bundle\DoctrineBundle\Registry $registry
      */
-    public function __construct(Registry $registry)
+    public function __construct(Container $container, Registry $registry)
     {
+        $this->container = $container;
         $this->em = $registry->getEntityManager();
     }
     
@@ -32,24 +40,26 @@ class PageTypeLoader extends Loader
             $this->em->getRepository('JazzeeCommonBundle:ApplicationPage')
                 ->findAll();
         foreach($applicationPages as $applicationPage){
-            $patern = 
-                '/' . 
-                $applicationPage->getApplication()
-                    ->getProgram()->getShortName() .
-                '/' .
-                $applicationPage->getApplication()->getCycle()->getName() .
-                '/page/' .
-                $applicationPage->getWeight();
-            $defaults = array(
-                '_controller' => 'JazzeeTextPageBundle:ApplicationPage:index',
-                'programShortName' => $applicationPage->getApplication()->getProgram()->getShortName(),
-                'cycleName' => $applicationPage->getApplication()->getCycle()->getName(),
-                'applicationPageId' => $applicationPage->getId()
+            $service = $applicationPage->getPage()
+                ->getType()->getRouteLoaderService();
+            if(!$this->container->has($service)){
+                throw new \Exception(
+                    "Unable to load the service {$service} for the page type " .
+                    $applicationPage->getPage()->getType()->getName() .
+                    ".  Maybe the bundle " .
+                    $applicationPage->getPage()->getType()->getBundleName() .
+                    ' is not loaded?'
+                );
+            }
+            $routeBuilder = $this->container->get(
+                $service
             );
-            $route = new Route($patern, $defaults, array());
-            $routeName = str_replace('/', '', $patern);
-            $routes->add($routeName, $route);
-            
+            if($routeBuilder instanceof RouteLoader){
+                $routeBuilder->addApplicationPageRoutes(
+                    $applicationPage,
+                    $routes)
+                ;
+            }
         }
 
         return $routes;

@@ -2,7 +2,6 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: "@JazzeeCommonBundle/Resources/config/services.yml" }
-    - { resource: "@JazzeeTextPageBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~
@@ -61,3 +60,5 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+    
+jazzee_text_page: ~

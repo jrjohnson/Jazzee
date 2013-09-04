@@ -2,9 +2,9 @@ Jazzee\CommonBundle\Entity\PageType:
     type: entity
     table: page_types
     uniqueConstraints:
-        pagetype_class:
+        pagetype_bundleName:
             columns:
-                - class
+                - bundleName
         pagetype_name:
             columns:
                 - name
@@ -15,5 +15,7 @@ Jazzee\CommonBundle\Entity\PageType:
             generator: { strategy: AUTO }
         name:
             type: string
-        class:
+        bundleName:
+            type: string
+        routeLoaderService:
             type: string

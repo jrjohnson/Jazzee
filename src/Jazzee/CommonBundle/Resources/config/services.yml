@@ -22,6 +22,6 @@ services:
         
     jazzeecommon_pagetypeloder:
         class:  "%jazzeecommon.pagetypeloader.class%"
-        arguments: ["@doctrine"]
+        arguments: ["@service_container", "@doctrine"]
         tags:
           - { name: routing.loader }

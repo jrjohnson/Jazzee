@@ -1,7 +1,6 @@
 parameters:
-#    jazzee_text_page.example.class: Jazzee\TextPageBundle\Example
+    jazzee_text_page.routeLoaderClass: Jazzee\TextPageBundle\RouteLoader
 
 services:
-#    jazzee_text_page.example:
-#        class: %jazzee_text_page.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    jazzee_text_page.routeLoader:
+        class:  "%jazzee_text_page.routeLoaderClass%"
