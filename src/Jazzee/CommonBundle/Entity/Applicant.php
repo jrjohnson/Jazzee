@@ -2,8 +2,10 @@
 
 namespace Jazzee\CommonBundle\Entity;
 
-use \Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Doctrine\Common\Collections\ArrayCollection,
+    Symfony\Component\Security\Core\User\EquatableInterface,
+    Symfony\Component\Security\Core\User\UserInterface,
+    Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * Applicant
@@ -15,7 +17,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * @author  Jon Johnson  <jon.johnson@ucsf.edu>
  * @license http://jazzee.org/license BSD-3-Clause
  * */
-class Applicant implements AdvancedUserInterface, \Serializable
+class Applicant implements AdvancedUserInterface, EquatableInterface, \Serializable
 {
     /**
      * The prefix to use for applicant caching
@@ -1181,5 +1183,18 @@ class Applicant implements AdvancedUserInterface, \Serializable
     public function isEnabled()
     {
         return !$this->deactivated;
+    }
+
+    public function isEqualTo(UserInterface $user)
+    {
+        if (!$user instanceof Applicant) {
+            return false;
+        }
+
+        if ($this->id !== $user->getId()) {
+            return false;
+        }
+
+        return true;
     }
 }

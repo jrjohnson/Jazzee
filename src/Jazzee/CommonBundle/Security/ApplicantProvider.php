@@ -2,13 +2,13 @@
 
 namespace Jazzee\CommonBundle\Security;
 
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Doctrine\Bundle\DoctrineBundle\Registry;
-use Symfony\Component\HttpFoundation\Request;
-use Jazzee\CommonBundle\Entity\Applicant;
+use Symfony\Component\Security\Core\User\UserProviderInterface,
+    Symfony\Component\Security\Core\User\UserInterface,
+    Symfony\Component\Security\Core\Exception\UsernameNotFoundException,
+    Symfony\Component\Security\Core\Exception\UnsupportedUserException,
+    Doctrine\Bundle\DoctrineBundle\Registry,
+    Symfony\Component\HttpFoundation\Request,
+    Jazzee\CommonBundle\Entity\Applicant;
 
 class ApplicantProvider implements UserProviderInterface
 {
