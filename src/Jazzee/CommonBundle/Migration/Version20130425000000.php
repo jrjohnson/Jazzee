@@ -1,6 +1,6 @@
 <?php
 
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Migrate DB for PDF Templates

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Modify applicant answers for TextInput and TextArea answers to htmlentity

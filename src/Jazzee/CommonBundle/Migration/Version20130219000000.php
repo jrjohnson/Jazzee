@@ -1,5 +1,5 @@
 <?php
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Update to use the files table to store all blobs and reference them by their

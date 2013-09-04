@@ -52,11 +52,6 @@ class jazzee ($databaseType) {
   $safeIps    = '10.0.0.0/8,127.0.0.1'
   $sslCert    = "${varPath}/snakeoil.crt"
 
-  file {'/vagrant/etc/config.ini.php':
-      ensure  => file,
-      content => template('jazzee/jazzee.ini.erb'),
-  }
-
   file {$varPath:
       ensure => directory,
       owner => root, 

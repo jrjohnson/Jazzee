@@ -61,12 +61,12 @@ UseCanonicalPhysicalPort on
     Options FollowSymLinks
     AllowOverride None
 </Directory>
-DocumentRoot "/vagrant/webroot"
+DocumentRoot "/vagrant/web"
 ServerName localhost
 ServerAdmin root@localhost
-<Directory "/vagrant/webroot/">
+<Directory "/vagrant/web/">
     Options FollowSymLinks
-    AllowOverride Fileinfo
+    AllowOverride Fileinfo Indexes
 </Directory>
 
 AccessFileName .htaccess

@@ -1,5 +1,5 @@
 <?php
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Update Answers to set public/private status to null when the answer_status_type is deleted

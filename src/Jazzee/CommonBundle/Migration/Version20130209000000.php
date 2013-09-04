@@ -1,5 +1,5 @@
 <?php
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Migration for display manager improvments 

@@ -1,5 +1,5 @@
 <?php
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Update GREScores to use decimals for storing scores

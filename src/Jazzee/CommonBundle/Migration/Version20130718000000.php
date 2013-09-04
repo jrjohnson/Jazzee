@@ -1,6 +1,6 @@
 <?php
 
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Fix problem with education page child answers

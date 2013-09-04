@@ -1,6 +1,6 @@
 <?php
 
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Add external ID validation for application entity

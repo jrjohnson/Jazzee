@@ -1,5 +1,5 @@
 <?php
-namespace Jazzee\Migration;
+namespace Jazzee\CommonBundle\Migration;
 
 /**
  * Initial DB Setup moved into a migration and pre-dated to 1/1/2013
