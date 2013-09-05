@@ -22,11 +22,11 @@ class LoadTestProgramData extends AbstractFixture implements OrderedFixtureInter
             'Jazzee\CommonBundle\Entity\Program',
             3,
             array(
-                'name' => function () use (&$generator) {
-                    return $generator->text;
+                'name' => function () use ($generator) {
+                    return $generator->text();
                 },
-                'shortName' => function () use (&$generator) {
-                    return $generator->word;
+                'shortName' => function () use ($generator) {
+                    return $generator->word();
                 }
             )
         );
