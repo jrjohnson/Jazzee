@@ -6,7 +6,7 @@ namespace Jazzee\CommonBundle\Hydrator;
  * Custom hydrator for applicant records that creates formed arrays for the grid
  * and other displays
  */
-class ApplicantDisplay extends ApplicantArrayHydrator
+class ApplicantDisplay extends ApplicantArray
 {
 
     private static $applications = array();

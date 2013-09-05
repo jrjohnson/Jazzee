@@ -6,7 +6,7 @@ namespace Jazzee\CommonBundle\Hydrator;
  * Custom hydrator for applicant records that creates
  * formatted arrays for PDF Templates
  */
-class ApplicantPDFTemplate extends ApplicantArrayHydrator
+class ApplicantPDFTemplate extends ApplicantArray
 {
 
     private static $applications = array();
