@@ -32,7 +32,7 @@ class VirtualFileTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\VirtualFile::getId
+    * @covers \Jazzee\CommonBundle\Entity\VirtualFile::getId
     */
     public function testGetId()
     {

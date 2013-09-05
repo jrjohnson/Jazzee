@@ -32,7 +32,7 @@ class PDFTemplateTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\PDFTemplate::getId
+    * @covers \Jazzee\CommonBundle\Entity\PDFTemplate::getId
     */
     public function testGetId()
     {

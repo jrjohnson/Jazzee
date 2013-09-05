@@ -23,7 +23,7 @@ class AnswerStatusTypeTest extends TestCase
     }
 
     /**
-     * @covers JazzeeCommonBundleEntity\AnswerStatusType::getId
+     * @covers \Jazzee\CommonBundle\Entity\AnswerStatusType::getId
      */
     public function testGetId()
     {

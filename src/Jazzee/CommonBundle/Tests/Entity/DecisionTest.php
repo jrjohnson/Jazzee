@@ -32,7 +32,7 @@ class DecisionTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Decision::getId
+    * @covers \Jazzee\CommonBundle\Entity\Decision::getId
     */
     public function testGetId()
     {

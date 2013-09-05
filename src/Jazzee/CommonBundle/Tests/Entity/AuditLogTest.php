@@ -25,7 +25,7 @@ class AuditLogTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\AuditLog::getId
+    * @covers \Jazzee\CommonBundle\Entity\AuditLog::getId
     */
     public function testGetId()
     {

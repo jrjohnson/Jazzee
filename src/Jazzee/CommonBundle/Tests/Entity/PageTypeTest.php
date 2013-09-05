@@ -32,7 +32,7 @@ class PageTypeTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\PageType::getId
+    * @covers \Jazzee\CommonBundle\Entity\PageType::getId
     */
     public function testGetId()
     {

@@ -32,7 +32,7 @@ class ElementListItemTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\ElementListItem::getId
+    * @covers \Jazzee\CommonBundle\Entity\ElementListItem::getId
     */
     public function testGetId()
     {

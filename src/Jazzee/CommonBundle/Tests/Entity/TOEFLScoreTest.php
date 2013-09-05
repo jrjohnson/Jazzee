@@ -32,7 +32,7 @@ class TOEFLScoreTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\TOEFLScore::getId
+    * @covers \Jazzee\CommonBundle\Entity\TOEFLScore::getId
     */
     public function testGetId()
     {

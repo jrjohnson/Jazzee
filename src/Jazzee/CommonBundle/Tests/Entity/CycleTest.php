@@ -32,7 +32,7 @@ class CycleTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Cycle::getId
+    * @covers \Jazzee\CommonBundle\Entity\Cycle::getId
     */
     public function testGetId()
     {

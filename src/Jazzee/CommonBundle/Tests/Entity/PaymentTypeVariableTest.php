@@ -32,7 +32,7 @@ class PaymentTypeVariableTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\PaymentTypeVariable::getId
+    * @covers \Jazzee\CommonBundle\Entity\PaymentTypeVariable::getId
     */
     public function testGetId()
     {

@@ -32,7 +32,7 @@ class RoleTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Role::getId
+    * @covers \Jazzee\CommonBundle\Entity\Role::getId
     */
     public function testGetId()
     {

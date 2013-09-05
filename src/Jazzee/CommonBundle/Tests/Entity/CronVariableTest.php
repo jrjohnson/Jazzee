@@ -32,7 +32,7 @@ class CronVariableTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\CronVariable::getId
+    * @covers \Jazzee\CommonBundle\Entity\CronVariable::getId
     */
     public function testGetId()
     {

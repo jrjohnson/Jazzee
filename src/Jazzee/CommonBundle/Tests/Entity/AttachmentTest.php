@@ -32,7 +32,7 @@ class AttachmentTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Attachment::getId
+    * @covers \Jazzee\CommonBundle\Entity\Attachment::getId
     */
     public function testGetId()
     {

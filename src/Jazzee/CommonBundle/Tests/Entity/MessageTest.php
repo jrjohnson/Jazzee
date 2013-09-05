@@ -32,7 +32,7 @@ class MessageTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Message::getId
+    * @covers \Jazzee\CommonBundle\Entity\Message::getId
     */
     public function testGetId()
     {

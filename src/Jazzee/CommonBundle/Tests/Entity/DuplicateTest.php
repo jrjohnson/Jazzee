@@ -32,7 +32,7 @@ class DuplicateTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Duplicate::getId
+    * @covers \Jazzee\CommonBundle\Entity\Duplicate::getId
     */
     public function testGetId()
     {

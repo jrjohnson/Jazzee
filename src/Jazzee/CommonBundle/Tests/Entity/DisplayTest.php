@@ -24,7 +24,7 @@ class DisplayTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Display::getId
+    * @covers \Jazzee\CommonBundle\Entity\Display::getId
     */
     public function testGetId()
     {

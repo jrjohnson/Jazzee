@@ -32,7 +32,7 @@ class TagTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Tag::getId
+    * @covers \Jazzee\CommonBundle\Entity\Tag::getId
     */
     public function testGetId()
     {

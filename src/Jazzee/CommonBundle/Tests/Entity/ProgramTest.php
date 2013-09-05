@@ -30,7 +30,7 @@ class ProgramTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Program::getId
+    * @covers \Jazzee\CommonBundle\Entity\Program::getId
     */
     public function testGetId()
     {

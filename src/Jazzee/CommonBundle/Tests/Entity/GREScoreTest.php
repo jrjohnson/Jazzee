@@ -32,7 +32,7 @@ class GREScoreTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\GREScore::getId
+    * @covers \Jazzee\CommonBundle\Entity\GREScore::getId
     */
     public function testGetId()
     {

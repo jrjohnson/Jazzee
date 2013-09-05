@@ -32,7 +32,7 @@ class ThreadTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\Thread::getId
+    * @covers \Jazzee\CommonBundle\Entity\Thread::getId
     */
     public function testGetId()
     {

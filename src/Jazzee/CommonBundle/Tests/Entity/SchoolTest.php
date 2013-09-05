@@ -32,7 +32,7 @@ class SchoolTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\School::getId
+    * @covers \Jazzee\CommonBundle\Entity\School::getId
     */
     public function testGetId()
     {

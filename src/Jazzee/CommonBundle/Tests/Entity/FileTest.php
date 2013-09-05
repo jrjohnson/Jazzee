@@ -23,7 +23,7 @@ class FileTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\File::getId
+    * @covers \Jazzee\CommonBundle\Entity\File::getId
     */
     public function testGetId()
     {

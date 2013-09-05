@@ -23,7 +23,7 @@ class DisplayElementTest extends TestCase
     }
 
     /**
-    * @covers JazzeeCommonBundleEntity\DisplayElement::getId
+    * @covers \Jazzee\CommonBundle\Entity\DisplayElement::getId
     */
     public function testGetId()
     {
