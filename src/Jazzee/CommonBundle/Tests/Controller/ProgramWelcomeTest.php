@@ -41,7 +41,7 @@ class ProgramWelcomeTest extends WebTestCase
                     ),
                     'Unpublished Application listed'
                 );
-            } elseif (!$application->isPublished() or !$application->isVisible()) {
+            } elseif ($application->isPublished() and !$application->isVisible()) {
                 $this->assertCount(
                     0,
                     $crawler->filter(
