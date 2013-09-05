@@ -31,7 +31,7 @@ class PageTypeLoader extends Loader
     public function __construct(Container $container, Registry $registry)
     {
         $this->container = $container;
-        $this->em = $registry->getEntityManager();
+        $this->em = $registry->getManager();
     }
 
     public function load($resource, $type = null)

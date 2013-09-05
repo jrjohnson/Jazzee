@@ -31,7 +31,7 @@ class ApplicantProvider implements UserProviderInterface
      */
     public function __construct(Registry $registry)
     {
-        $this->em = $registry->getEntityManager();
+        $this->em = $registry->getManager();
     }
 
     /**
