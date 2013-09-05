@@ -19,7 +19,9 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('jazzee_text_page');
         $rootNode
             ->children()
-                ->scalarNode('routeLoaderClass')->defaultValue('Jazzee\TextPageBundle\RouteLoader')->cannotBeEmpty()->end()
+                ->scalarNode('routeLoaderClass')
+                ->defaultValue('Jazzee\TextPageBundle\RouteLoader')
+                ->cannotBeEmpty()->end()
             ->end()
         ;
 

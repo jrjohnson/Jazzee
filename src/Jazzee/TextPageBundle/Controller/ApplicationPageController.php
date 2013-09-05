@@ -16,7 +16,7 @@ class ApplicationPageController extends Controller
         }
         $applicationPage = $application
             ->getApplicationPageById($applicationPageId);
-        if(!$applicationPage){
+        if (!$applicationPage) {
             throw $this->createNotFoundException();
         }
 

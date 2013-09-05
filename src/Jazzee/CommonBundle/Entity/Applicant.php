@@ -2,10 +2,10 @@
 
 namespace Jazzee\CommonBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection,
-    Symfony\Component\Security\Core\User\EquatableInterface,
-    Symfony\Component\Security\Core\User\UserInterface,
-    Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\EquatableInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * Applicant
@@ -1150,9 +1150,7 @@ class Applicant implements AdvancedUserInterface, EquatableInterface, \Serializa
      */
     public function serialize()
     {
-        return serialize(array(
-            $this->id,
-        ));
+        return serialize(array($this->id));
     }
 
     /**
@@ -1160,9 +1158,7 @@ class Applicant implements AdvancedUserInterface, EquatableInterface, \Serializa
      */
     public function unserialize($serialized)
     {
-        list (
-            $this->id,
-        ) = unserialize($serialized);
+        list ($this->id) = unserialize($serialized);
     }
 
     public function isAccountNonExpired()

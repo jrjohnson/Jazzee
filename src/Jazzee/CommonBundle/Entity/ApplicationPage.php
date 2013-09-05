@@ -499,4 +499,16 @@ class ApplicationPage
 
         return $this->jazzeePage;
     }
+    
+    public function getBaseRouteName()
+    {
+        $name = 'jazzeeapplicationpage_' .
+            $this->getApplication()
+                ->getProgram()->getShortName() .
+            '_' .
+            $this->getApplication()->getCycle()->getName() .
+            '_page_' .
+            $this->getWeight() . '_index';
+        return $name;
+    }
 }

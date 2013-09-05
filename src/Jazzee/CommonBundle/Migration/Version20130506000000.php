@@ -7,16 +7,16 @@ namespace Jazzee\CommonBundle\Migration;
  */
 class Version20130506000000 extends \Doctrine\DBAL\Migrations\AbstractMigration
 {
-  public function up(\Doctrine\DBAL\Schema\Schema  $schema)
-  {
-    $table = $schema->getTable('pages');
-    $table->addColumn('fixedId', 'integer', array('notNull' => false));
 
-  }
+    public function up(\Doctrine\DBAL\Schema\Schema $schema)
+    {
+        $table = $schema->getTable('pages');
+        $table->addColumn('fixedId', 'integer', array('notNull' => false));
+    }
 
-  public function down(\Doctrine\DBAL\Schema\Schema  $schema)
-  {
-    $table = $schema->getTable('pages');
-    $table->dropColumn('fixedid');
-  }
+    public function down(\Doctrine\DBAL\Schema\Schema $schema)
+    {
+        $table = $schema->getTable('pages');
+        $table->dropColumn('fixedid');
+    }
 }

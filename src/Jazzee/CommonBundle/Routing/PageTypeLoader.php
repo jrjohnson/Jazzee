@@ -10,11 +10,13 @@ use Jazzee\CommonBundle\Interfaces\Page\RouteLoader;
 
 class PageTypeLoader extends Loader
 {
+
     /**
      *
      * @var \Doctrine\ORM\EntityManager
      */
     protected $em;
+
     /**
      *
      * @var \Symfony\Component\DependencyInjection\ContainerInterface
@@ -31,18 +33,18 @@ class PageTypeLoader extends Loader
         $this->container = $container;
         $this->em = $registry->getEntityManager();
     }
-    
+
     public function load($resource, $type = null)
     {
         $routes = new RouteCollection();
-        
-        $applicationPages = 
+
+        $applicationPages =
             $this->em->getRepository('JazzeeCommonBundle:ApplicationPage')
-                ->findAll();
-        foreach($applicationPages as $applicationPage){
+            ->findAll();
+        foreach ($applicationPages as $applicationPage) {
             $service = $applicationPage->getPage()
-                ->getType()->getRouteLoaderService();
-            if(!$this->container->has($service)){
+                            ->getType()->getRouteLoaderService();
+            if (!$this->container->has($service)) {
                 throw new \Exception(
                     "Unable to load the service {$service} for the page type " .
                     $applicationPage->getPage()->getType()->getName() .
@@ -51,14 +53,10 @@ class PageTypeLoader extends Loader
                     ' is not loaded?'
                 );
             }
-            $routeBuilder = $this->container->get(
-                $service
-            );
-            if($routeBuilder instanceof RouteLoader){
-                $routeBuilder->addApplicationPageRoutes(
-                    $applicationPage,
-                    $routes)
-                ;
+            $routeBuilder = $this->container->get($service);
+            if ($routeBuilder instanceof RouteLoader) {
+                $routeBuilder
+                    ->addApplicationPageRoutes($applicationPage, $routes);
             }
         }
 

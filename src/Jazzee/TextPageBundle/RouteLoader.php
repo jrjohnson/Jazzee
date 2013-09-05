@@ -20,9 +20,9 @@ class RouteLoader implements \Jazzee\CommonBundle\Interfaces\Page\RouteLoader
     public function addApplicationPageRoutes(
         ApplicationPage $applicationPage,
         RouteCollection $routeCollection
-    ){
-        $patern = 
-            '/' . 
+    ) {
+        $patern =
+            '/' .
             $applicationPage->getApplication()
                 ->getProgram()->getShortName() .
             '/' .
@@ -36,7 +36,7 @@ class RouteLoader implements \Jazzee\CommonBundle\Interfaces\Page\RouteLoader
             'applicationPageId' => $applicationPage->getId()
         );
         $route = new Route($patern, $defaults, array());
-        $routeName = str_replace('/', '', $patern);
+        $routeName = $applicationPage->getBaseRouteName();
         $routeCollection->add($routeName, $route);
     }
 }

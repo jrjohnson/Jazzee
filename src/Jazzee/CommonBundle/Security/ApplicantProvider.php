@@ -2,13 +2,13 @@
 
 namespace Jazzee\CommonBundle\Security;
 
-use Symfony\Component\Security\Core\User\UserProviderInterface,
-    Symfony\Component\Security\Core\User\UserInterface,
-    Symfony\Component\Security\Core\Exception\UsernameNotFoundException,
-    Symfony\Component\Security\Core\Exception\UnsupportedUserException,
-    Doctrine\Bundle\DoctrineBundle\Registry,
-    Symfony\Component\HttpFoundation\Request,
-    Jazzee\CommonBundle\Entity\Applicant;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Doctrine\Bundle\DoctrineBundle\Registry;
+use Symfony\Component\HttpFoundation\Request;
+use Jazzee\CommonBundle\Entity\Applicant;
 
 class ApplicantProvider implements UserProviderInterface
 {
@@ -52,29 +52,32 @@ class ApplicantProvider implements UserProviderInterface
     public function loadUserByUsername($email)
     {
         if (null === $this->request) {
-            throw new \Exception(
-                "Unable to get the request object.");
+            throw new \Exception("Unable to get the request object.");
         }
 
         $programShortName = $this->request->get('programShortName');
         $cycleName = $this->request->get('cycleName');
-        $application = $this->em->getRepository('JazzeeCommonBundle:Application')
-                ->findByProgramAndCycleName($programShortName, $cycleName);
+        $application =
+            $this->em->getRepository('JazzeeCommonBundle:Application')
+            ->findByProgramAndCycleName($programShortName, $cycleName);
         if ($application) {
             $applicant =
-                    $this->em->getRepository('JazzeeCommonBundle:Applicant')
-                    ->findOneBy(
-                    array('email'       => $email, 'application' => $application)
-            );
+                $this->em->getRepository('JazzeeCommonBundle:Applicant')
+                ->findOneBy(
+                    array('email' => $email, 'application' => $application)
+                );
             if ($applicant) {
                 return $applicant;
             }
         }
 
         throw new UsernameNotFoundException(
-        sprintf(
-                'Email %s not found in %s %s', $email, $programShortName, $cycleName
-        )
+            sprintf(
+                'Email %s not found in %s %s',
+                $email,
+                $programShortName,
+                $cycleName
+            )
         );
     }
 
@@ -82,16 +85,17 @@ class ApplicantProvider implements UserProviderInterface
     {
         if (!$user instanceof Applicant) {
             throw new UnsupportedUserException(
-            sprintf('
-                    Instances of "%s" are not supported.', get_class($user)
-            )
+                sprintf(
+                    'Instances of "%s" are not supported.',
+                    get_class($user)
+                )
             );
         }
         $programShortName = $this->request->get('programShortName');
         $cycleName = $this->request->get('cycleName');
         $application = $this->em->getRepository('JazzeeCommonBundle:Application')
                 ->findByProgramAndCycleName($programShortName, $cycleName);
-        if($application){
+        if ($application) {
             $applicant = $this->em
                 ->getRepository('JazzeeCommonBundle:Applicant')->findOneBy(
                     array(
@@ -100,14 +104,17 @@ class ApplicantProvider implements UserProviderInterface
                     )
                 );
             if ($applicant) {
-               return $applicant; 
+                return $applicant;
             }
         }
 
         throw new UsernameNotFoundException(
-        sprintf(
-                'Applicant %s not found in %s %s', $user->getId(), $programShortName, $cycleName
-        )
+            sprintf(
+                'Applicant %s not found in %s %s',
+                $user->getId(),
+                $programShortName,
+                $cycleName
+            )
         );
     }
 

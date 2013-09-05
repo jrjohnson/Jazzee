@@ -2,6 +2,17 @@
 {% extends 'JazzeeCommonBundle::layout.html.twig' %}
 {% block title %}{{ application.program.name }}{% endblock %}
 {% block hd %}<h1>{{ application.cycle.name }} {{ application.program.name }}</h1>{% endblock %}
-{% block content %}
-
+{% block nav %}
+    <ol class='nobullets'>
+        {% for page in application.applicationPages %}
+            <li>
+                <a href="{{ 
+                        path(
+                            page.baseRouteName
+                        ) }}">
+                    {{ page.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
 {% endblock %}

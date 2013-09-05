@@ -42,6 +42,6 @@ a.highlight {font-weight: bold;}
   font-weight: bold;
 }
 
-ul.nobullets {
+ul.nobullets, ol.nobullets {
     list-style-type: none;
 }
