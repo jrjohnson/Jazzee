@@ -91,6 +91,10 @@ class ApplicantProvider implements UserProviderInterface
                 )
             );
         }
+
+        if (null === $this->request) {
+            throw new \Exception("Unable to get the request object.");
+        }
         $programShortName = $this->request->get('programShortName');
         $cycleName = $this->request->get('cycleName');
         $application = $this->em->getRepository('JazzeeCommonBundle:Application')

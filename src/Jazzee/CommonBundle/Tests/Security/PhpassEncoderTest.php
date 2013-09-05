@@ -9,7 +9,7 @@ class PhpassEncoderTest extends TestCase
 {
 
     /**
-     * @var AnswerStatusType
+     * @var PhpassEncoder
      */
     protected $object;
 
@@ -29,7 +29,7 @@ class PhpassEncoderTest extends TestCase
     public function testEncode()
     {
         $generator = \Faker\Factory::create();
-        for($i = 0; $i<100; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $raw = $generator->word;
             $encoded = $this->object->encodePassword($raw, $generator->word);
             $this->assertTrue($this->object->isPasswordValid($encoded, $raw, $generator->word));
