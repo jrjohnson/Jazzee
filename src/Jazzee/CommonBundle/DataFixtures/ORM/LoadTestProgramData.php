@@ -16,33 +16,26 @@ class LoadTestProgramData extends AbstractFixture implements OrderedFixtureInter
      */
     public function load(ObjectManager $manager)
     {
-        $generator  = \Faker\Factory::create();
-        $populator  = new \Faker\ORM\Doctrine\Populator($generator, $manager);
-        $populator->addEntity(
-            'Jazzee\CommonBundle\Entity\Program',
-            3,
-            array(
-                'name' => function () use ($generator) {
-                    return $generator->text();
-                },
-                'shortName' => function () use ($generator) {
-                    return $generator->word();
-                }
-            )
-        );
-        $entities = $populator->execute();
-        $programs = $entities['Jazzee\CommonBundle\Entity\Program'];
-        $programs[0]->unExpire();
-        $programs[1]->unExpire();
-        $programs[2]->expire();
+        $refPrefix = 'jazzee.commonbundle.entity.program#';
+        $program = new Program;
+        $program->setName('Test Program');
+        $program->setShortName('tp');
+        $this->addReference($refPrefix . '0',$program);
+        $manager->persist($program);
+        
+        $program = new Program;
+        $program->setName('Test Program 2');
+        $program->setShortName('tp2');
+        $this->addReference($refPrefix . '1',$program);
+        $manager->persist($program);
+        
+        $program = new Program;
+        $program->setName('Test Program (expired)');
+        $program->setShortName('tpexpired');
+        $program->expire();
+        $this->addReference($refPrefix . '2',$program);
+        $manager->persist($program);
 
-        foreach ($programs as $key => $class) {
-            $this->addReference(
-                'jazzee.commonbundle.entity.program#' . $key,
-                $class
-            );
-            $manager->persist($class);
-        }
         $manager->flush();
     }
 

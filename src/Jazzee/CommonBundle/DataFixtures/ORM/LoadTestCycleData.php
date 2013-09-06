@@ -16,25 +16,23 @@ class LoadTestCycleData extends AbstractFixture implements OrderedFixtureInterfa
      */
     public function load(ObjectManager $manager)
     {
-        $generator = \Faker\Factory::create();
-        $populator = new \Faker\ORM\Doctrine\Populator($generator, $manager);
-        $populator->addEntity(
-            'Jazzee\CommonBundle\Entity\Cycle',
-            3,
-            array(
-                'name' => function () use ($generator) {
-                    return $generator->word;
-                }
-            )
-        );
-        $entities = $populator->execute();
-        $cycles   = $entities['Jazzee\CommonBundle\Entity\Cycle'];
-        foreach ($cycles as $key => $class) {
-            $this->addReference(
-                'jazzee.commonbundle.entity.cycle#' . $key,
-                $class
-            );
-        }
+        $refPrefix = 'jazzee.commonbundle.entity.cycle#';
+        $cycle = new Cycle();
+        $cycle->setName('firstcycle');
+        $manager->persist($cycle);
+        $this->addReference($refPrefix . '0',$cycle);
+        
+        $cycle = new Cycle();
+        $cycle->setName('secondcycle');
+        $manager->persist($cycle);
+        $this->addReference($refPrefix . '1',$cycle);
+        
+        $cycle = new Cycle();
+        $cycle->setName('thirdcycle');
+        $manager->persist($cycle);
+        $this->addReference($refPrefix . '2',$cycle);
+        
+        $manager->flush();
     }
 
     /**

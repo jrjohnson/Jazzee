@@ -16,34 +16,38 @@ class LoadTestApplicationData extends AbstractFixture implements OrderedFixtureI
      */
     public function load(ObjectManager $manager)
     {
-        $generator = \Faker\Factory::create();
-        $populator = new \Faker\ORM\Doctrine\Populator($generator, $manager);
-        $program   = $this->getReference('jazzee.commonbundle.entity.program#0');
-        $populator->addEntity(
-            'Jazzee\CommonBundle\Entity\Application',
-            3,
-            array('program'  => $program)
-        );
-        $entities     = $populator->execute();
-        $applications = $entities['Jazzee\CommonBundle\Entity\Application'];
-        foreach ($applications as $key => $class) {
-            $class->setCycle(
-                $this->getReference(
-                    'jazzee.commonbundle.entity.cycle#' . $key
-                )
-            );
-            $this->addReference(
-                'jazzee.commonbundle.entity.application#' . $key,
-                $class
-            );
-            $manager->persist($class);
-        }
-        $applications[0]->publish();
-        $applications[0]->visible();
-        $applications[1]->unPublish();
-        $applications[1]->inVisible();
-        $applications[2]->publish();
-        $applications[2]->inVisible();
+        $refPrefix ='jazzee.commonbundle.entity.application#';
+        $program = $this->getReference('jazzee.commonbundle.entity.program#0');
+        $application = new Application();
+        $application->setProgram($program);
+        $application->setCycle($this->getReference('jazzee.commonbundle.entity.cycle#0'));
+        $application->setWelcome("First Application published, visible");
+        $this->addReference($refPrefix . '0',$application);
+        $application->setOpen('today');
+        $application->setClose('tomorrow');
+        $application->publish();
+        $application->visible();
+        $manager->persist($application);
+        
+        $application = new Application();
+        $application->setProgram($program);
+        $application->setCycle($this->getReference('jazzee.commonbundle.entity.cycle#1'));
+        $application->setWelcome("Second Application unpublished, invisible");
+        $this->addReference($refPrefix . '1',$application);
+        $application->inVisible();
+        $manager->persist($application);
+        
+        $application = new Application();
+        $application->setProgram($program);
+        $application->setCycle($this->getReference('jazzee.commonbundle.entity.cycle#2'));
+        $application->setWelcome("Third Application published, invisible");
+        $this->addReference($refPrefix . '2',$application);
+        $application->setOpen('today');
+        $application->setClose('tomorrow');
+        $application->publish();
+        $application->inVisible();
+        $manager->persist($application);
+        
         $manager->flush();
     }
 
