@@ -30,6 +30,7 @@ class AppKernel extends Kernel
         }
 
         if (in_array($this->getEnvironment(), array('test'))) {
+            ini_set('memory_limit', -1);
             $bundles[] = new IC\Bundle\Base\TestBundle\ICBaseTestBundle();
         }
 
