@@ -2,7 +2,7 @@
 
 namespace Jazzee\CommonBundle\Tests\Controller;
 
-use IC\Bundle\Base\TestBundle\Test\WebTestCase;
+use IC\Bundle\Base\TestBundle\Test\Functional\WebTestCase;
 
 class ProgramWelcomeTest extends WebTestCase
 {

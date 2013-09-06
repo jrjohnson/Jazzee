@@ -2,7 +2,7 @@
 
 namespace Jazzee\CommonBundle\Tests\Controller;
 
-use IC\Bundle\Base\TestBundle\Test\WebTestCase;
+use IC\Bundle\Base\TestBundle\Test\Functional\WebTestCase;
 
 class ApplicationWelcomeTest extends WebTestCase
 {
@@ -19,7 +19,6 @@ class ApplicationWelcomeTest extends WebTestCase
     public function testIndex()
     {
         $client  = $this->getClient();
-        $client->insulate();
         for ($i = 0; $i < 3; $i++) {
             $application = $this->getReferenceRepository()
                 ->getReference('jazzee.commonbundle.entity.application#' . $i);
