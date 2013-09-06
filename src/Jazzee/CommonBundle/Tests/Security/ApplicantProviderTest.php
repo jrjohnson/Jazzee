@@ -15,7 +15,7 @@ class AplicantProviderTest extends TestCase
     }
 
     /**
-     * @covers \Jazzee\CommonBundle\Security\ApplicantProvider::loadByUserName
+     * @covers \Jazzee\CommonBundle\Security\ApplicantProvider::loadUserByUsername
      */
     public function testNoRouterExceptionLoad()
     {
@@ -30,7 +30,7 @@ class AplicantProviderTest extends TestCase
     }
 
     /**
-     * @covers \Jazzee\CommonBundle\Security\ApplicantProvider::loadByUserName
+     * @covers \Jazzee\CommonBundle\Security\ApplicantProvider::loadUserByUsername
      */
     public function testLoadUserByUsername()
     {
@@ -67,7 +67,7 @@ class AplicantProviderTest extends TestCase
     }
 
     /**
-     * @covers \Jazzee\CommonBundle\Security\ApplicantProvider::loadByUserName
+     * @covers \Jazzee\CommonBundle\Security\ApplicantProvider::loadUserByUsername
      */
     public function testNoUserByUsername()
     {
@@ -105,7 +105,7 @@ class AplicantProviderTest extends TestCase
     }
 
     /**
-     * @covers \Jazzee\CommonBundle\Security\ApplicantProvider::loadByUserName
+     * @covers \Jazzee\CommonBundle\Security\ApplicantProvider::loadUserByUsername
      */
     public function testNoApplicationLoad()
     {
