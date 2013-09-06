@@ -22,7 +22,7 @@ class LoadTestApplicationData extends AbstractFixture implements OrderedFixtureI
         $application->setProgram($program);
         $application->setCycle($this->getReference('jazzee.commonbundle.entity.cycle#0'));
         $application->setWelcome("First Application published, visible");
-        $this->addReference($refPrefix . '0',$application);
+        $this->addReference($refPrefix . '0', $application);
         $application->setOpen('today');
         $application->setClose('tomorrow');
         $application->publish();
@@ -33,7 +33,7 @@ class LoadTestApplicationData extends AbstractFixture implements OrderedFixtureI
         $application->setProgram($program);
         $application->setCycle($this->getReference('jazzee.commonbundle.entity.cycle#1'));
         $application->setWelcome("Second Application unpublished, invisible");
-        $this->addReference($refPrefix . '1',$application);
+        $this->addReference($refPrefix . '1', $application);
         $application->inVisible();
         $manager->persist($application);
         
@@ -41,7 +41,7 @@ class LoadTestApplicationData extends AbstractFixture implements OrderedFixtureI
         $application->setProgram($program);
         $application->setCycle($this->getReference('jazzee.commonbundle.entity.cycle#2'));
         $application->setWelcome("Third Application published, invisible");
-        $this->addReference($refPrefix . '2',$application);
+        $this->addReference($refPrefix . '2', $application);
         $application->setOpen('today');
         $application->setClose('tomorrow');
         $application->publish();

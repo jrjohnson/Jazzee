@@ -20,17 +20,17 @@ class LoadTestCycleData extends AbstractFixture implements OrderedFixtureInterfa
         $cycle = new Cycle();
         $cycle->setName('firstcycle');
         $manager->persist($cycle);
-        $this->addReference($refPrefix . '0',$cycle);
+        $this->addReference($refPrefix . '0', $cycle);
         
         $cycle = new Cycle();
         $cycle->setName('secondcycle');
         $manager->persist($cycle);
-        $this->addReference($refPrefix . '1',$cycle);
+        $this->addReference($refPrefix . '1', $cycle);
         
         $cycle = new Cycle();
         $cycle->setName('thirdcycle');
         $manager->persist($cycle);
-        $this->addReference($refPrefix . '2',$cycle);
+        $this->addReference($refPrefix . '2', $cycle);
         
         $manager->flush();
     }

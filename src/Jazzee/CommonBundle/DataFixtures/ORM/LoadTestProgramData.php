@@ -20,20 +20,20 @@ class LoadTestProgramData extends AbstractFixture implements OrderedFixtureInter
         $program = new Program;
         $program->setName('Test Program');
         $program->setShortName('tp');
-        $this->addReference($refPrefix . '0',$program);
+        $this->addReference($refPrefix . '0', $program);
         $manager->persist($program);
         
         $program = new Program;
         $program->setName('Test Program 2');
         $program->setShortName('tp2');
-        $this->addReference($refPrefix . '1',$program);
+        $this->addReference($refPrefix . '1', $program);
         $manager->persist($program);
         
         $program = new Program;
         $program->setName('Test Program (expired)');
         $program->setShortName('tpexpired');
         $program->expire();
-        $this->addReference($refPrefix . '2',$program);
+        $this->addReference($refPrefix . '2', $program);
         $manager->persist($program);
 
         $manager->flush();
