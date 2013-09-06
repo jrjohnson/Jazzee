@@ -269,16 +269,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "e018cf34f6c8642eba40ca44871fead97616922a"
+                "reference": "c811f96f0cf83b997e3a3ed037cac729bbe3e803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/e018cf34f6c8642eba40ca44871fead97616922a",
-                "reference": "e018cf34f6c8642eba40ca44871fead97616922a",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/c811f96f0cf83b997e3a3ed037cac729bbe3e803",
+                "reference": "c811f96f0cf83b997e3a3ed037cac729bbe3e803",
                 "shasum": ""
             },
             "require": {
-                "doctrine/data-fixtures": "*",
+                "doctrine/data-fixtures": "~1.0",
                 "doctrine/doctrine-bundle": "~1.0",
                 "php": ">=5.3.2",
                 "symfony/doctrine-bridge": "~2.1"
@@ -318,7 +318,7 @@
                 "Fixture",
                 "persistence"
             ],
-            "time": "2013-08-05 08:41:18"
+            "time": "2013-09-05 11:23:37"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -327,12 +327,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "a9796ce33152754e4dbc7d251da5c1c0a739189c"
+                "reference": "3db446747fa70dedb7adbd5413cd87bb5a4ad1bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/a9796ce33152754e4dbc7d251da5c1c0a739189c",
-                "reference": "a9796ce33152754e4dbc7d251da5c1c0a739189c",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/3db446747fa70dedb7adbd5413cd87bb5a4ad1bb",
+                "reference": "3db446747fa70dedb7adbd5413cd87bb5a4ad1bb",
                 "shasum": ""
             },
             "require": {
@@ -372,7 +372,7 @@
                 "migrations",
                 "schema"
             ],
-            "time": "2013-07-10 12:55:18"
+            "time": "2013-09-03 20:38:48"
         },
         {
             "name": "doctrine/migrations",
@@ -1930,12 +1930,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/instaclick/ICBaseTestBundle.git",
-                "reference": "d3f6e2f2f005a12284a4351baa29f83ec4f3c9e2"
+                "reference": "8bdba5aa9ed9d50bf0300fd920dabef25d057602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/instaclick/ICBaseTestBundle/zipball/d3f6e2f2f005a12284a4351baa29f83ec4f3c9e2",
-                "reference": "d3f6e2f2f005a12284a4351baa29f83ec4f3c9e2",
+                "url": "https://api.github.com/repos/instaclick/ICBaseTestBundle/zipball/8bdba5aa9ed9d50bf0300fd920dabef25d057602",
+                "reference": "8bdba5aa9ed9d50bf0300fd920dabef25d057602",
                 "shasum": ""
             },
             "require": {
@@ -1963,7 +1963,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2013-08-07 15:21:46"
+            "time": "2013-09-03 13:00:16"
         },
         {
             "name": "kukulich/fshl",
