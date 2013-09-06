@@ -101,7 +101,9 @@ class Version20130901000000 extends AbstractMigration implements ContainerAwareI
             $classes[$row['class']] = $row['id'];
         }
         foreach ($this->types as &$type) {
-            $type['id'] = $classes[$type['class']];
+            if (array_key_exists($type['class'], $classes)) {
+              $type['id'] = $classes[$type['class']];
+            }
         }
     }
 
@@ -144,17 +146,23 @@ class Version20130901000000 extends AbstractMigration implements ContainerAwareI
             'WHERE id=:id'
         );
         foreach ($this->types as $type) {
-            $fixPageType->bindParam('id', $type['id']);
-            $fixPageType->bindParam('bundleName', $type['bundleName']);
-            $fixPageType->bindParam(
-                'routeLoaderService',
-                $type['routeLoaderService']
-            );
-            $fixPageType->execute();
-            $this->write(
-                "<info>Changed {$type['class']} pages " .
-                "to {$type['bundleName']}."
-            );
+            if (!is_null($type['id']) ){
+                $fixPageType->bindParam('id', $type['id']);
+                $fixPageType->bindParam('bundleName', $type['bundleName']);
+                $fixPageType->bindParam(
+                    'routeLoaderService',
+                    $type['routeLoaderService']
+                );
+                $fixPageType->execute();
+                $this->write(
+                    "<info>Changed {$type['class']} pages " .
+                    "to {$type['bundleName']}."
+                );
+            } else {
+                $this->write(
+                    "<info>Skipped {$type['class']} no page type exists."
+                );
+            }
         }
     }
 
@@ -168,7 +176,9 @@ class Version20130901000000 extends AbstractMigration implements ContainerAwareI
             $classes[$row['bundleName']] = $row['id'];
         }
         foreach ($this->types as &$type) {
-            $type['id'] = $classes[$type['bundleName']];
+            if (array_key_exists($type['class'], $classes)) {
+              $type['id'] = $classes[$type['bundleName']];
+            }
         }
     }
 
@@ -196,13 +206,19 @@ class Version20130901000000 extends AbstractMigration implements ContainerAwareI
             'UPDATE page_types SET class=:classname WHERE id=:id'
         );
         foreach ($this->types as $type) {
-            $fixPageType->bindParam('id', $type['id']);
-            $fixPageType->bindParam('classname', $type['class']);
-            $fixPageType->execute();
-            $this->write(
-                "<info>Changed {$type['bundleName']} pages " .
-                "to {$type['class']}."
-            );
+            if (!is_null($type['id']) ){
+                $fixPageType->bindParam('id', $type['id']);
+                $fixPageType->bindParam('classname', $type['class']);
+                $fixPageType->execute();
+                $this->write(
+                    "<info>Changed {$type['bundleName']} pages " .
+                    "to {$type['class']}."
+                );
+            } else {
+                $this->write(
+                    "<info>Skipped {$type['class']} no bundle exists."
+                );
+            }
         }
     }
 }
