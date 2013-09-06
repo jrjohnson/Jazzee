@@ -42,4 +42,21 @@ class AppKernel extends Kernel
         $loader->load(__DIR__ . '/config/config_' . $this->getEnvironment() . '.yml');
     }
 
+    public function getCacheDir()
+    {
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            return sys_get_temp_dir() . '/jazzee/cache/' . $this->getEnvironment();
+        }
+
+        return parent::getCacheDir();
+    }
+
+    public function getLogDir()
+    {
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            return sys_get_temp_dir() . '/jazzee/logs/';
+        }
+
+        return parent::getLogDir();
+    }
 }
