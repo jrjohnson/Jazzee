@@ -33,6 +33,12 @@ jazzee_common_applicantlogout:
     requirements:
       programShortName: '[0-9a-zA-Z_]+'
       cycleName: '[0-9a-zA-Z_]+'
+      
+jazzee_common_applicationfirstpage:
+    pattern:  /{programShortName}/{cycleName}/page/0
+    requirements:
+      programShortName: '[0-9a-zA-Z_]+'
+      cycleName: '[0-9a-zA-Z_]+'
 
 jazzee_common_page:
     resource: .

@@ -21,6 +21,7 @@ security:
             form_login:
                 login_path:  jazzee_common_applicantlogin
                 check_path:  jazzee_common_applicantlogincheck
+                default_target_path: jazzee_common_applicationfirstpage
             logout:
                 path:   jazzee_common_applicantlogout
                 target: jazzee_common_applicationwelcome
