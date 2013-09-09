@@ -26,18 +26,6 @@ monolog:
 
 assetic:
     use_controller: true
-    
-bazinga_faker:
-    orm: doctrine
-    entities:
-        Jazzee\CommonBundle\Entity\Program:
-            number: 5
-            custom_formatters:
-              shortName: { method: word }
-        Jazzee\CommonBundle\Entity\Cycle:
-            number: 2
-        Jazzee\CommonBundle\Entity\Application:
-            number: 2
 
 #swiftmailer:
 #    delivery_address: me@example.com
