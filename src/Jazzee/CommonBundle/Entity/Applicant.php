@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Jazzee\CommonBundle\Security\PhpassEncoder;
 
 /**
  * Applicant
@@ -112,8 +113,8 @@ class Applicant implements AdvancedUserInterface, EquatableInterface, \Serializa
      */
     public function setPassword($password)
     {
-        $passHash = new \PasswordHash(8, false);
-        $this->password = $passHash->HashPassword($password);
+        $passHash = new PhpassEncoder();
+        $this->password = $passHash->encodePassword($password, null);
         //when a new password is set reset the failedLogin counter
         $this->failedLoginAttempts = 0;
     }
