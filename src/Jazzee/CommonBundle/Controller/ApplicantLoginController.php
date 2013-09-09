@@ -12,13 +12,13 @@ class ApplicantLoginController extends Controller
         $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
         $session = $request->getSession();
-        
+
         $application = $em->getRepository('JazzeeCommonBundle:Application')
             ->findByProgramAndCycleName($programShortName, $cycleName);
         if (!$application or !$application->isPublished()) {
             throw $this->createNotFoundException();
         }
-        
+
         // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(
