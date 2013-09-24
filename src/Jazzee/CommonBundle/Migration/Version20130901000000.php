@@ -102,7 +102,7 @@ class Version20130901000000 extends AbstractMigration implements ContainerAwareI
         }
         foreach ($this->types as &$type) {
             if (array_key_exists($type['class'], $classes)) {
-              $type['id'] = $classes[$type['class']];
+                $type['id'] = $classes[$type['class']];
             }
         }
     }
@@ -146,7 +146,7 @@ class Version20130901000000 extends AbstractMigration implements ContainerAwareI
             'WHERE id=:id'
         );
         foreach ($this->types as $type) {
-            if (!is_null($type['id']) ){
+            if (!is_null($type['id'])) {
                 $fixPageType->bindParam('id', $type['id']);
                 $fixPageType->bindParam('bundleName', $type['bundleName']);
                 $fixPageType->bindParam(
@@ -177,7 +177,7 @@ class Version20130901000000 extends AbstractMigration implements ContainerAwareI
         }
         foreach ($this->types as &$type) {
             if (array_key_exists($type['class'], $classes)) {
-              $type['id'] = $classes[$type['bundleName']];
+                $type['id'] = $classes[$type['bundleName']];
             }
         }
     }
@@ -206,7 +206,7 @@ class Version20130901000000 extends AbstractMigration implements ContainerAwareI
             'UPDATE page_types SET class=:classname WHERE id=:id'
         );
         foreach ($this->types as $type) {
-            if (!is_null($type['id']) ){
+            if (!is_null($type['id'])) {
                 $fixPageType->bindParam('id', $type['id']);
                 $fixPageType->bindParam('classname', $type['class']);
                 $fixPageType->execute();

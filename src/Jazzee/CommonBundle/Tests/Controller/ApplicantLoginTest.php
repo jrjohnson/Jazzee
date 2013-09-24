@@ -64,7 +64,7 @@ class ApplicantLoginTest extends WebTestCase
                 array(
                     'programShortName' => $application->getProgram()->getShortName(),
                     'cycleName' => $application->getCycle()->getName()
-                ), 
+                ),
                 true
             );
         
@@ -85,7 +85,7 @@ class ApplicantLoginTest extends WebTestCase
                 array(
                     'programShortName' => $application->getProgram()->getShortName(),
                     'cycleName' => $application->getCycle()->getName()
-                ), 
+                ),
                 true
             );
         $this->assertTrue($response->isRedirect($redirectTarget));
